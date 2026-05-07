@@ -1,71 +1,148 @@
-# SJSU Student Resource Navigator
-### AI for Social Good | BUS4-110A | Spring 2026
+# Sammy's Source
+### SJSU Student Resource Navigator · AI for Social Good | BUS4-110A | Spring 2026
 
-**SDGs:** No Poverty (1) · Quality Education (4)
-**AI Capability:** Text Generation
-**Stack:** Python · Google Gemini API · Google Colab
+> Built for the student who has 48 hours before registration closes, a financial hold on their account, and no idea which office to call first.
+
+![Python](https://img.shields.io/badge/Python-3.12-blue?style=flat-square&logo=python)
+![Gemini](https://img.shields.io/badge/Google-Gemini_API-orange?style=flat-square&logo=google)
+![Colab](https://img.shields.io/badge/Google-Colab-yellow?style=flat-square&logo=googlecolab)
+![SDG1](https://img.shields.io/badge/SDG-No_Poverty-red?style=flat-square)
+![SDG4](https://img.shields.io/badge/SDG-Quality_Education-darkred?style=flat-square)
 
 ---
 
-## Problem
+## The Problem
 
-First-gen SJSU students in financial crisis can't navigate the system fast enough to get help before deadlines hit.
+SJSU has the resources. Students in crisis can't find them fast enough.
 
-Here's the exact breakdown: a student gets a financial hold two weeks before fall registration closes. She's working 20 hours a week, her family earns under $40k, and her FAFSA hasn't disbursed yet. The answer exists somewhere on the SJSU website — spread across six departments, written in administrative language, with no clear path to action. She opens the Student Financial Services page, sees twelve programs, and closes the tab.
+A first-gen student gets a financial hold two weeks before fall registration closes. She's working 20 hours a week, her family earns under $40k, her FAFSA hasn't disbursed, and the clock is running. The answer is somewhere on the SJSU website, buried across six departments, written for administrators, not students. She opens the Student Financial Services page, sees twelve programs with overlapping eligibility requirements, and closes the tab.
 
-That's the failure point. Not missing information. Inaccessible information at the worst possible moment.
+That's the moment Sammy's Source is built for. Not the student who knows how to navigate the system. The one who doesn't and can't afford to figure it out.
+
+**The failure:** Information exists but can't be understood or acted on under pressure. That gap costs students their semester.
 
 ---
 
 ## AI Capability
 
-Text generation bridges the gap between a stressed student's plain-language description of their situation and a specific, ranked action plan.
+| Capability | Lab | Why It Fits |
+|---|---|---|
+| Text Generation | Lab 1 | Students describe their situation, they don't categorize it. Sammy's Source works in plain language, not form fields. |
 
-The system prompt is the policy layer. One instruction determines whether the tool works for everyone or just students who already know how to navigate the system. Lab 1 proved this — a single line decided whether the 311 civic tool could serve Spanish, Vietnamese, and Cantonese speakers at all. The same principle applies here.
+The system prompt is where the real decisions live. Lab 1 made that clear: one line determined whether a civic tool could serve Spanish, Vietnamese, and Cantonese speakers at all. Pull that line and you've quietly excluded 40% of the population it was built for. Same dynamic here. Every word in Sammy's Source system prompt determines who gets an answer and how useful that answer actually is.
 
-Text generation was chosen over structured extraction because students in crisis don't fill out forms accurately under stress. They describe. The tool meets them where they are.
+Structured extraction (Lab 2) requires input that's clean and categorized. A student in crisis doesn't write like that. Image recognition (Lab 3) doesn't apply. Text generation is the only capability that meets people where they actually are.
 
 ---
 
-## Workflow
-Student types situation in plain language -> Gemini reads input against system prompt (7 SJSU resources, ranked by urgency) ->Returns 1-3 recommendations under 200 words in the student's own language -> Peer advisor reviews flagged inputs before delivery (non-English or vague messages) -> Student gets a specific next step, not a list of links
+## How It Works
 
-**What goes in:** Free-text description — no fields, no categories, no forms.
+    Student describes their situation in plain language
+                    ↓
+        Sammy's Source reads against system prompt
+         (7 SJSU resources, prioritized by urgency)
+                    ↓
+       1-3 recommendations returned under 200 words
+            in the student's own language
+                    ↓
+        Flagged inputs held for peer advisor review
+          (non-English messages or vague inputs)
+                    ↓
+      Student gets a next step, not another list of links
 
-**What the AI does:** Matches the situation to the most relevant SJSU resources, ranks by urgency, gives specific actions — where to go, who to contact, what to bring.
+| Step | Detail |
+|---|---|
+| **Input** | Plain-language description, no forms, no fields, no categories |
+| **AI Step** | Matches situation to relevant SJSU resources, ranks by urgency, returns specific actions with locations and contacts |
+| **Output** | Under 200 words in the student's language, closing with direct acknowledgment of their situation |
+| **Who Acts** | Basic Needs Center peer advisor reviews non-English and vague inputs before anything reaches the student |
 
-**What comes out:** A response under 200 words in the student's language, ending with acknowledgment of their situation.
+---
 
-**Who acts on it:** A Basic Needs Center peer advisor reviews anything vague or non-English before it reaches the student. Everything else delivers directly.
+## Screenshots
 
-![Test Case 1 — Financial Hold](screenshots/test1.png)
-![Edge Case — Spanish Input Comparison](screenshots/edge_case.png)
+<details>
+<summary>Test Case 1 — Financial Hold Blocking Registration</summary>
+
+![Test Case 1](screenshots/test1.png)
+
+</details>
+
+<details>
+<summary>Test Case 2 — Food Insecurity</summary>
+
+![Test Case 2](screenshots/test2.png)
+
+</details>
+
+<details>
+<summary>Test Case 3 — Overlapping Crises</summary>
+
+![Test Case 3](screenshots/test3.png)
+
+</details>
+
+<details>
+<summary>Test Case 4 — Changed Financial Circumstances</summary>
+
+![Test Case 4](screenshots/test4.png)
+
+</details>
+
+<details>
+<summary>Edge Case — Spanish Input Before and After Fix</summary>
+
+![Edge Case](screenshots/edge_case.png)
+
+</details>
 
 ---
 
 ## Failure Case
 
-**The input:** A Spanish-speaking student sends a vague distress message with no specific details about what kind of help she needs.
-"Hola, necesito ayuda. No tengo dinero y no sé qué hacer.
-Estoy en la universidad pero no entiendo los recursos."
-**What Gemini returned:** [paste actual Cell 9 output here]
+The edge case was designed to find exactly where Sammy's Source breaks down.
 
-**The real-world consequence:** The system responds in English. The student can't act on it. She misses the Fee Deferral Program deadline. Her hold stays. She can't register for the following semester. The student the tool was built for is the first one it fails.
+**Input tested:**
 
-**The lab connection:** Lab 1 showed that a missing line in the system prompt locks out an entire population. When input is vague and non-English, the model either guesses wrong or defaults to English — same dynamic, different stakes.
+    "Hola, necesito ayuda. No tengo dinero y no sé qué hacer.
+    Estoy en la universidad pero no entiendo los recursos."
+
+    Translation: "Hello, I need help. I have no money and I don't
+    know what to do. I am at the university but I don't understand
+    the resources."
+
+**What Sammy's Source returned:** [paste actual Cell 9 output here]
+
+**What that costs a real student:** The system responds in English. She can't act on it. She misses the Fee Deferral Program deadline. The hold stays. She loses her spot in fall classes. The student Sammy's Source was designed to reach is the first one it fails, and she's also the least likely to try again.
+
+**The lab connection:** Lab 1 showed that a missing line in the system prompt quietly locks out entire communities. Without language detection, non-English speakers get responses they can't use. The edge case in this notebook made that failure concrete, not theoretical.
 
 ---
 
 ## Oversight and Tradeoff
 
-**Where human review sits:** Any response going to a student who wrote in a non-English language or sent a message too vague to route accurately gets held for peer advisor review at the Basic Needs Center before delivery.
+**Where human review sits:**
+Every response flagged as non-English or too vague to route accurately gets held for peer advisor review at the Basic Needs Center before it reaches the student. That's the line. Anything with real enrollment or housing consequences needs a human in the loop before it lands.
 
-**The one change:** A language detection instruction was added to the system prompt. Gemini now responds in the student's language and asks one clarifying question instead of guessing when input is unclear. Demonstrated in the notebook by re-running the same edge case against both prompts.
+**The one change:**
+A language detection instruction was added to the system prompt. Sammy's Source now matches the student's language and asks one clarifying question when the input is too vague to route, instead of guessing and getting it wrong. The notebook shows the before and after on the same input.
 
-**What it costs:** Speed. Vague or non-English inputs now trigger a review queue — 4 to 24 hours depending on staffing. For a student with a registration deadline in two days, that's a real tradeoff. A wrong recommendation delivered instantly does more damage than a correct one delivered the next morning.
+**What that costs:**
+
+| Tradeoff | Detail |
+|---|---|
+| Speed | Non-English and vague inputs now queue for human review, 4 to 24 hours depending on staffing |
+| Immediacy vs. Accuracy | A confident wrong answer delivered in seconds does more damage than the right answer delivered the next morning |
+
+The tradeoff is real. For a student with two days until registration closes, a 24-hour queue matters. Accuracy was prioritized anyway, because the students most likely to write in Spanish or send a vague message are also the least likely to have a backup plan if the tool sends them to the wrong office.
 
 ---
 
-## Team
+## Project Info
 
-Built for BUS4-110A: Fundamentals of MIS · SJSU Lucas College of Business · Spring 2026
+| Field | Detail |
+|---|---|
+| Course | BUS4-110A: Fundamentals of MIS |
+| Institution | SJSU Lucas College of Business · Spring 2026 |
+| AI Tool | Google Gemini API, gemini-2.0-flash |
+| SDGs | No Poverty (1) · Quality Education (4) |

@@ -19,27 +19,16 @@ That's the failure point. Not missing information. Inaccessible information at t
 
 ## AI Capability
 
-Text generation (Lab 1) bridges the gap between a stressed student's plain-language description of their situation and a specific, ranked action plan.
+Text generation bridges the gap between a stressed student's plain-language description of their situation and a specific, ranked action plan.
 
-The system prompt is the policy layer. One instruction determines whether the tool works for everyone or just students who already know how to navigate the system. Lab 1 proved this — a single line decided whether the 311 civic tool could serve Spanish, Vietnamese, and Cantonese speakers at all. Same principle applies here.
+The system prompt is the policy layer. One instruction determines whether the tool works for everyone or just students who already know how to navigate the system. Lab 1 proved this — a single line decided whether the 311 civic tool could serve Spanish, Vietnamese, and Cantonese speakers at all. The same principle applies here.
 
-Text generation was chosen over structured extraction (Lab 2) because students in crisis don't fill out forms accurately under stress. They describe. The tool meets them where they are.
+Text generation was chosen over structured extraction because students in crisis don't fill out forms accurately under stress. They describe. The tool meets them where they are.
 
 ---
 
 ## Workflow
-Student types situation in plain language
-↓
-Gemini reads input against system prompt
-(7 SJSU resources, ranked by urgency)
-↓
-Returns 1-3 recommendations under 200 words
-in the student's own language
-↓
-Peer advisor reviews flagged inputs before delivery
-(non-English or vague messages)
-↓
-Student gets a specific next step, not a list of links
+Student types situation in plain language -> Gemini reads input against system prompt (7 SJSU resources, ranked by urgency) ->Returns 1-3 recommendations under 200 words in the student's own language -> Peer advisor reviews flagged inputs before delivery (non-English or vague messages) -> Student gets a specific next step, not a list of links
 
 **What goes in:** Free-text description — no fields, no categories, no forms.
 
@@ -56,7 +45,7 @@ Student gets a specific next step, not a list of links
 
 ## Failure Case
 
-**The input:** A Spanish-speaking student sends a vague distress message with no specific detail about what kind of help she needs.
+**The input:** A Spanish-speaking student sends a vague distress message with no specific details about what kind of help she needs.
 "Hola, necesito ayuda. No tengo dinero y no sé qué hacer.
 Estoy en la universidad pero no entiendo los recursos."
 **What Gemini returned:** [paste actual Cell 9 output here]

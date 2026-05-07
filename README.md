@@ -1,109 +1,82 @@
 # SJSU Student Resource Navigator
-**AI for Social Good | Fundamentals of MIS | Spring 2026**
-**SDG 1: No Poverty | SDG 4: Quality Education**
+### AI for Social Good | BUS4-110A | Spring 2026
+
+**SDGs:** No Poverty (1) · Quality Education (4)
+**AI Capability:** Text Generation
+**Stack:** Python · Google Gemini API · Google Colab
 
 ---
 
 ## Problem
 
-Maria is a first-generation SJSU student with a financial hold on her
-account two weeks before fall registration closes. She works 20 hours
-a week, her family earns under $40,000 a year, and her FAFSA disbursement
-is delayed. The SJSU website lists programs across six departments with
-eligibility requirements written in administrative language she cannot
-parse under stress. The exact moment the system breaks down: she lands
-on the Student Financial Services page, sees twelve programs, and closes
-the tab.
+First-gen SJSU students in financial crisis can't navigate the system fast enough to get help before deadlines hit.
 
-The failure is not that information does not exist. It is that the
-information cannot be understood or navigated by the student who needs
-it most, at the moment she needs it most.
+Here's the exact breakdown: a student gets a financial hold two weeks before fall registration closes. She's working 20 hours a week, her family earns under $40k, and her FAFSA hasn't disbursed yet. The answer exists somewhere on the SJSU website — spread across six departments, written in administrative language, with no clear path to action. She opens the Student Financial Services page, sees twelve programs, and closes the tab.
+
+That's the failure point. Not missing information. Inaccessible information at the worst possible moment.
 
 ---
 
 ## AI Capability
 
-We use text generation (Lab 1) to bridge the gap between a stressed
-student's description of their situation and the specific SJSU resource
-that applies to them.
+Text generation (Lab 1) bridges the gap between a stressed student's plain-language description of their situation and a specific, ranked action plan.
 
-The system prompt functions as a policy layer — the same principle
-demonstrated in Lab 1, where a single instruction determined whether
-the 311 tool could serve non-English-speaking residents at all. Here,
-the system prompt determines whether a student gets directed to the
-right office or the wrong one. Text generation fits this failure point
-because the problem is translation: converting an emotional, vague
-description of distress into a specific, actionable next step. Structured
-extraction (Lab 2) would require the student to fill in fields they may
-not understand. Image recognition (Lab 3) does not apply.
+The system prompt is the policy layer. One instruction determines whether the tool works for everyone or just students who already know how to navigate the system. Lab 1 proved this — a single line decided whether the 311 civic tool could serve Spanish, Vietnamese, and Cantonese speakers at all. Same principle applies here.
+
+Text generation was chosen over structured extraction (Lab 2) because students in crisis don't fill out forms accurately under stress. They describe. The tool meets them where they are.
 
 ---
 
 ## Workflow
+Student types situation in plain language
+↓
+Gemini reads input against system prompt
+(7 SJSU resources, ranked by urgency)
+↓
+Returns 1-3 recommendations under 200 words
+in the student's own language
+↓
+Peer advisor reviews flagged inputs before delivery
+(non-English or vague messages)
+↓
+Student gets a specific next step, not a list of links
 
-**Input:** Student types a free-text description of their financial
-situation in natural language. No forms, no fields, no categories required.
+**What goes in:** Free-text description — no fields, no categories, no forms.
 
-**AI step:** Gemini reads the input against a system prompt containing
-knowledge of seven SJSU resources. It identifies the 1-3 most relevant
-programs, ranks them by urgency, and returns a plain-language
-recommendation with specific actions: where to go, who to contact,
-what to bring.
+**What the AI does:** Matches the situation to the most relevant SJSU resources, ranks by urgency, gives specific actions — where to go, who to contact, what to bring.
 
-**Output:** A response under 200 words in the student's own language,
-ending with an acknowledgment of their situation.
+**What comes out:** A response under 200 words in the student's language, ending with acknowledgment of their situation.
 
-**Who acts:** A peer advisor in the Basic Needs Center reviews any
-response flagged as vague or non-English before it reaches the student.
-For clear English-language inputs, the response is delivered directly.
+**Who acts on it:** A Basic Needs Center peer advisor reviews anything vague or non-English before it reaches the student. Everything else delivers directly.
 
-![Test Case 1](screenshots/test1.png)
-![Edge Case Comparison](screenshots/edge_case.png)
+![Test Case 1 — Financial Hold](screenshots/test1.png)
+![Edge Case — Spanish Input Comparison](screenshots/edge_case.png)
 
 ---
 
 ## Failure Case
 
-**Input:** A Spanish-speaking student sends a vague message with no
-specific detail about whether the crisis involves food, housing, fees,
-or registration: "Hola, necesito ayuda. No tengo dinero y no sé qué
-hacer. Estoy en la universidad pero no entiendo los recursos."
+**The input:** A Spanish-speaking student sends a vague distress message with no specific detail about what kind of help she needs.
+"Hola, necesito ayuda. No tengo dinero y no sé qué hacer.
+Estoy en la universidad pero no entiendo los recursos."
+**What Gemini returned:** [paste actual Cell 9 output here]
 
-**What Gemini returned:** [paste your actual Cell 9 output here in
-1-2 sentences — what did it say and what language did it respond in]
+**The real-world consequence:** The system responds in English. The student can't act on it. She misses the Fee Deferral Program deadline. Her hold stays. She can't register for the following semester. The student the tool was built for is the first one it fails.
 
-**Real-world consequence:** If the system responds only in English,
-the student cannot understand the recommendation. She misses the Fee
-Deferral Program deadline, her hold remains, and she cannot register
-for the following semester. The student most in need of help is the
-one the system fails first.
-
-**Lab connection:** Lab 1 demonstrated that a single line in the
-system prompt determines who the tool can serve. When that line is
-absent, non-English speakers receive responses they cannot act on.
-The same dynamic produced the failure observed in the edge case cell
-of this notebook.
+**The lab connection:** Lab 1 showed that a missing line in the system prompt locks out an entire population. When input is vague and non-English, the model either guesses wrong or defaults to English — same dynamic, different stakes.
 
 ---
 
 ## Oversight and Tradeoff
 
-**Oversight position:** A peer advisor in the Basic Needs Center
-reviews any response before delivery when the student wrote in a
-language other than English or when the input was too vague to route
-accurately. This is the minimum human checkpoint before the
-recommendation has real consequences.
+**Where human review sits:** Any response going to a student who wrote in a non-English language or sent a message too vague to route accurately gets held for peer advisor review at the Basic Needs Center before delivery.
 
-**The one change:** We added a language detection instruction to the
-system prompt directing Gemini to respond in the student's language
-and to ask one clarifying question rather than guess when input is
-vague. This is demonstrated by re-running the same edge case input
-against the updated prompt in the notebook.
+**The one change:** A language detection instruction was added to the system prompt. Gemini now responds in the student's language and asks one clarifying question instead of guessing when input is unclear. Demonstrated in the notebook by re-running the same edge case against both prompts.
 
-**What it costs:** This reduces speed. Every vague or non-English
-input now triggers either a clarifying exchange adding one round-trip
-delay, or a human review queue adding 4 to 24 hours depending on
-staffing. For a student with a registration deadline in two days,
-that delay is real. We chose accuracy over immediacy because a wrong
-recommendation sent instantly causes more harm than a correct one
-sent the next morning.
+**What it costs:** Speed. Vague or non-English inputs now trigger a review queue — 4 to 24 hours depending on staffing. For a student with a registration deadline in two days, that's a real tradeoff. A wrong recommendation delivered instantly does more damage than a correct one delivered the next morning.
+
+---
+
+## Team
+
+Built for BUS4-110A: Fundamentals of MIS · SJSU Lucas College of Business · Spring 2026

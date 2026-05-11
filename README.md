@@ -158,5 +158,5 @@ The tradeoff is real. For a student with two days until registration closes, a 2
 | **AI Tool** | Google Gemini API, gemini-2.0-flash |
 | **SDGs** | No Poverty (1) · Quality Education (4) |
 | **Developers** | Team 5 |
-| | [Cash Johnson](https://www.linkedin.com/in/cash-johnson/) • [Fatima Zehra Shaihk](https://www.linkedin.com/in/fatimazehra-shaikh/) | 
+| | [Cash Johnson](https://www.linkedin.com/in/cash-johnson/) • [Fatima Zehra Shaikh](https://www.linkedin.com/in/fatimazehra-shaikh/) | 
 | | [James Doan](https://www.linkedin.com/in/jamesdoan/) • Wilson Lin • Jackie Li |

@@ -1,5 +1,6 @@
 # Sammy's Source
 ### SJSU Student Resource Navigator · AI for Social Good | BUS4-110A | Spring 2026
+ _**Developed by:** [Cash Johnson](https://www.linkedin.com/in/cash-johnson/), [Fatima Shaihk](https://www.linkedin.com/in/fatimazehra-shaikh/), [James Doan](https://www.linkedin.com/in/jamesdoan/), Wilson Lin, Jackie Li_
 
 > _Built for the student who has 48 hours before registration closes, a financial hold on their account, and no idea which office to call first._
 

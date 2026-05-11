@@ -1,6 +1,5 @@
 # Sammy's Source
 ### SJSU Student Resource Navigator · AI for Social Good | BUS4-110A | Spring 2026
- _**Developed by:** [Cash Johnson](https://www.linkedin.com/in/cash-johnson/), [Fatima Shaihk](https://www.linkedin.com/in/fatimazehra-shaikh/), [James Doan](https://www.linkedin.com/in/jamesdoan/), Wilson Lin, Jackie Li_
 
 > _Built for the student who has 48 hours before registration closes, a financial hold on their account, and no idea which office to call first._
 
@@ -154,7 +153,10 @@ The tradeoff is real. For a student with two days until registration closes, a 2
 
 | Field | Detail |
 |---|---|
-| Course | BUS4-110A: Fundamentals of MIS |
-| Institution | SJSU Lucas College of Business · Spring 2026 |
-| AI Tool | Google Gemini API, gemini-2.0-flash |
-| SDGs | No Poverty (1) · Quality Education (4) |
+| **Course** | BUS4-110A: Fundamentals of MIS |
+| **Institution** | SJSU Lucas College of Business · Spring 2026 |
+| **AI Tool** | Google Gemini API, gemini-2.0-flash |
+| **SDGs** | No Poverty (1) · Quality Education (4) |
+| **Developers** | Team 5 |
+| | [Cash Johnson](https://www.linkedin.com/in/cash-johnson/) • [Fatima Zehra Shaihk](https://www.linkedin.com/in/fatimazehra-shaikh/) | 
+| | [James Doan](https://www.linkedin.com/in/jamesdoan/) • Wilson Lin • Jackie Li |

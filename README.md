@@ -1,8 +1,8 @@
 # Sammy's Source
 ### SJSU Student Resource Navigator · AI for Social Good | BUS4-110A | Spring 2026
 
-> _Built for the student who has 48 hours before registration closes, a financial hold on their account, and no idea which office to call first.
-_
+> _Built for the student who has 48 hours before registration closes, a financial hold on their account, and no idea which office to call first._
+
 ![Python](https://img.shields.io/badge/Python-3.12-blue?style=flat-square&logo=python)
 ![Gemini](https://img.shields.io/badge/Google-Gemini_API-orange?style=flat-square&logo=google)
 ![Colab](https://img.shields.io/badge/Google-Colab-yellow?style=flat-square&logo=googlecolab)

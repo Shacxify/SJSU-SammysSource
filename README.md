@@ -111,7 +111,18 @@ The edge case was designed to find exactly where Sammy's Source breaks down.
     know what to do. I am at the university but I don't understand
     the resources."
 
-**What Sammy's Source returned:** [paste actual Cell 9 output here]
+**What Sammy's Source returned:** 
+
+    "Hola, entiendo que te sientes abrumado y necesitas ayuda con los recursos financieros. Aquí tienes algunas opciones que te pueden ayudar a empezar:
+
+    1.  **Spartan Food Pantry:** Para obtener alimentos de inmediato, puedes conseguir comestibles gratis. Ve al Student Wellness Center, abierto de lunes a viernes de 10
+    am a 4 pm. No hay requisitos de ingresos.
+    2.  **Basic Needs Center:** Visita Clark Hall 126. Allí te pueden conectar con apoyo para vivienda, vivienda de emergencia y ayudarte a inscribirte en los beneficios de
+    alimentos de CalFresh.
+    3.  **Emergency Financial Assistance Fund:** Si tienes una emergencia financiera repentina, podrías ser elegible para una subvención de hasta $500. Solicítalo a través
+    de Student Financial Services (SFS) en Student Services Center Room 201.
+
+    Es completamente comprensible sentirse perdido al enfrentar dificultades financieras.
 
 **What that costs a real student:** The system responds in English. She can't act on it. She misses the Fee Deferral Program deadline. The hold stays. She loses her spot in fall classes. The student Sammy's Source was designed to reach is the first one it fails, and she's also the least likely to try again.
 
